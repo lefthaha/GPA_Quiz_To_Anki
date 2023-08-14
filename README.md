@@ -1,7 +1,4 @@
 # GPA_Quiz_To_Anki
-----
-
-Parse Government Procurement Act  Questions to Anki card.
 
 將 [政府電子採購網 > 採購法規題庫](https://web.pcc.gov.tw/psms/plrtqdm/questionPublic/indexReadQuestion) 之題庫轉成 Anki 卡片供練習使用
 
@@ -11,11 +8,11 @@ Parse Government Procurement Act  Questions to Anki card.
 
 ## Download Questions
 
-需先至 [政府電子採購網](https://web.pcc.gov.tw/psms/plrtqdm/questionPublic/indexReadQuestion) 手動下載題庫, 勾選所有類別後點選查詢, 再選擇匯出(pdf)
+- 需先至 [政府電子採購網](https://web.pcc.gov.tw/psms/plrtqdm/questionPublic/indexReadQuestion) 手動下載題庫, 勾選所有類別後點選查詢, 再選擇匯出(pdf)
 
 ![勾選所有類別後點查詢](./screenshots/SearchQuiz.png "勾選所有類別後點選查詢")
 
-匯出後再拉到網頁下方紀錄共有多少題目, 供最後產製完卡片核對使用
+- 匯出後再拉到網頁下方紀錄共有多少題目, 供最後產製完卡片核對使用
 
 ![記錄共有多少題目](./screenshots/TotalQuiz.png "記錄共有多少題目")
 

@@ -129,7 +129,6 @@ def set_re_patten(quiz_type: str, q_num: int):
 
         return (raw_yesno_patten, re_yesno)
 
-# re_choice = re.compile('(?P<ans>\d+)(?P<quiz>[^\(\)]*)\(\d\)(?P<option1>[^\(\)]*)\(\d\)(?P<option2>[^\(\)]*)\(\d\)(?P<option3>[^\(\)]*)\(\d\)(?P<option4>[^\(\)]*?$)', re.MULTILINE)
 re_download_date = re.compile('資料產生日期：(?P<date>.+?)$', re.MULTILINE)
 
 def parse_gpa_quiz(input_filepath: str, output_filepath: str):
@@ -146,7 +145,6 @@ def parse_gpa_quiz(input_filepath: str, output_filepath: str):
     # Parse download date, only for page 1
     if(re_download_date.search(first_page_text)):
         download_date = re_download_date.search(first_page_text).group('date').replace("/","-")
-
 
     text_main = ''
     text_next_type = ''
@@ -165,11 +163,9 @@ def parse_gpa_quiz(input_filepath: str, output_filepath: str):
     page_index = -1
     q_num = 1
     start_pos = 0
-
     record_num = 0
 
-    while page_index < total_pages:
-        
+    while page_index < total_pages:        
         while(keep_search):
  
             patten_obj, parse_obj = set_re_patten(quiz_type, q_num)
@@ -191,8 +187,7 @@ def parse_gpa_quiz(input_filepath: str, output_filepath: str):
                 
             except Exception as e:
                 print(e)
-                print(q_num)
-                
+                print(q_num)                
 
         if not keep_search:
             # load next page or text type question
@@ -271,7 +266,7 @@ def parse_gpa_quiz(input_filepath: str, output_filepath: str):
   
     # Generate Anki package
     # ref: https://github.com/kerrickstaley/genanki
-    # more options: https://docs.ankiweb.net/
+    # more details: https://docs.ankiweb.net/
     gpa_deck = genanki.Deck(1614529274, '採購法題庫_' + download_date)
     
     gpa_model = genanki.Model(
@@ -301,16 +296,12 @@ def parse_gpa_quiz(input_filepath: str, output_filepath: str):
     print("\n Total Quiz: " + str(len(quizs)))
 
     genanki.Package(gpa_deck).write_to_file(output_filepath)
-
-
     
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-
     parser.add_argument("-i", "--input_file_path", dest="input_path",\
                         help="input pdf file path")
-
     parser.add_argument("-o", "--output_file_path", dest="output_path",\
                         help="output file path, ex. gpa.apkg")
     args = parser.parse_args()
